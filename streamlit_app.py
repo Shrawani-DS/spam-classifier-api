@@ -9,7 +9,10 @@ text = st.text_area("Enter email text")
 if st.button("Predict"):
     url = "https://spam-classifier-api-xv9i.onrender.com"
     
-    response = requests.post(url, json={"text": text})
+    response = requests.post(
+    url + "/predict",
+    json={"message": text}
+)
     
     if response.status_code == 200:
         result = response.json()
