@@ -1,10 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import joblib
+from app.preprocessing import transform_text
+
 
 # Load model and vectorizer
-model = joblib.load(open("model/spam_model.pkl", "rb"))
-tfidf_vectorizer = joblib.load(open("model/tfidf.pkl", "rb"))
+model = joblib.load(r"model\linear_svm_model.pkl")
+tfidf_vectorizer = joblib.load(r"model\tfidf_vectorizer.pkl")
 
 app = FastAPI(title="Spam Email Classifier API")
 
@@ -21,16 +23,13 @@ def home():
 @app.post("/predict")
 def predict_spam(data: EmailRequest):
     text = data.message
-    
-    # Transform text
-    vectorized_text = tfidf_vectorizer.transform([text])
-    
-    # Predict
+
+    processed_text = transform_text(text)
+    vectorized_text = tfidf_vectorizer.transform([processed_text])
+
     prediction = model.predict(vectorized_text)[0]
-    probability = model.predict_proba(vectorized_text)[0][1]
-    
+
     return {
         "message": text,
-        "prediction": "Spam" if prediction == 1 else "Not Spam",
-        "spam_probability": float(probability)
+        "prediction": "Spam" if prediction == 1 else "Ham"
     }
