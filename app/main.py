@@ -12,7 +12,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 model = joblib.load(BASE_DIR / "model" / "linear_svm_model.pkl")
 tfidf_vectorizer = joblib.load(BASE_DIR / "model" / "tfidf_vectorizer.pkl")
 
-app = FastAPI(title="Spam Email Classifier API")
+app = FastAPI(title="Email Spam Classifier API",
+    description="Predict whether an email or SMS message is Spam or Ham using a trained Linear SVM model.",
+    version="1.0.0")
 
 # Request schema
 class EmailRequest(BaseModel):
