@@ -61,19 +61,20 @@ The objective of this project is to build a machine learning model capable of au
 
 ```text
 Email_Spam_Classifier/
-
-├── app/
-│   ├── __init__.py
-│   └── main.py
 │
-├── data/
+├── app/
+│   ├── main.py
+│   ├── preprocessing.py
+│   └── __init__.py
+│
 ├── model/
+│   ├── linear_svm_model.pkl
+│   └── tfidf_vectorizer.pkl
+│
 ├── notebook/
-├── screenshots/
+│
 ├── streamlit_app.py
-├── Dockerfile
 ├── requirements.txt
-├── Procfile
 └── README.md
 ```
 
