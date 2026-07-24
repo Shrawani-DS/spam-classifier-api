@@ -295,16 +295,14 @@ docker run -p 8000:8000 spam-classifier
 
 ---
 
-# 🔮 Future Enhancements
 
-- Hyperparameter Tuning
-- Explainable AI (SHAP/LIME)
-- Confidence Score for Predictions
-- Email Attachment Analysis
-- Multilingual Spam Detection
-- Deep Learning Models (LSTM/BERT)
-- CI/CD Pipeline
-- AWS Deployment
+## 🔮 Future Enhancements
+
+- Hyperparameter tuning for further model optimization
+- Explainable AI using SHAP/LIME for prediction interpretability
+- Confidence score for spam predictions
+- Multilingual spam detection
+- AWS cloud deployment with CI/CD automation
 
 ---
 
